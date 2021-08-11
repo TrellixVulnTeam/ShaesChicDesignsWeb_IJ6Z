@@ -33,8 +33,8 @@ namespace WebAPI
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver =
             new DefaultContractResolver());
 
-            services.AddDbContext<WorkContext>(opt =>
-                       opt.UseSqlite("Work"));
+            services.AddDbContext<WorkContext>(options =>
+                options.UseSqlite(Configuration.GetConnectionString("Work")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

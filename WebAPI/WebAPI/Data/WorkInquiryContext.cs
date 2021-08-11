@@ -9,6 +9,11 @@ namespace WebAPI.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<WorkInquiry>()
+              .HasKey(p => new { p.WorkInquiryId});
+        }
 
         public DbSet<WorkInquiry> WorkInquiries { get; set; }
     }

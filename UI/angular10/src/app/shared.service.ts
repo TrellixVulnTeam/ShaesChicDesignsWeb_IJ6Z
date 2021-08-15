@@ -30,7 +30,7 @@ readonly PhotoUrl = "https://localhost:44347/Photos/";
 
 
   getDepList():Observable<any[]>{
-    return this.http.get<any>(this.APIUrl+'/department');
+    return this.http.get<any>(this.APIUrl+'/Department');
   }
 
   addDepartment(val:any){

@@ -1,4 +1,5 @@
   
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import {SharedService} from 'src/app/shared.service';
 
@@ -11,27 +12,28 @@ export class WorkInquiryComponent implements OnInit {
 
   constructor(private service:SharedService) { }
 
+  //WorkInquiryId:number=10;
+  Description:string ="";
   FirstName:string ="";
   LastName:string ="";
   Email:string ="";
   PhoneNumber:string ="";
-  Description:string ="";
-
-
 
   ngOnInit(): void {
 
   }
 
+  addWorkInquiry(){
+    var val = {
+      //WorkInquiryId:this.WorkInquiryId,
+      Description:this.Description,
+      FirstName:this.FirstName,
+      LastName:this.LastName,
+      Email:this.Email,
+      PhoneNumber:this.PhoneNumber
+      };
 
-  addEmployee(){
-    var val = {FirstName:this.FirstName,
-                LastName:this.LastName,
-                Email:this.Email,
-              PhoneNumber:this.PhoneNumber,
-            Description:this.Description};
-
-    this.service.addEmployee(val).subscribe(res=>{
+    this.service.addWorkInquiry(val).subscribe(res=>{
       alert(res.toString());
     });
   }

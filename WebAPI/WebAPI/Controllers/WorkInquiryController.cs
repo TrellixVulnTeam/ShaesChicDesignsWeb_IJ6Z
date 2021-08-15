@@ -29,6 +29,8 @@ namespace WebAPI.Controllers
         [HttpPost]
         public JsonResult Post(WorkInquiry workInquiry)
         {
+            _workContext.WorkInquiries.Add(workInquiry);
+            _workContext.SaveChangesAsync();
             return new JsonResult("Added Successfully");
         }
 

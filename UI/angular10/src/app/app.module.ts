@@ -14,6 +14,7 @@ import{SharedService} from './shared.service';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { WorkInquiryComponent } from './workInquiry/workInquiry.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { WorkInquiryComponent } from './workInquiry/workInquiry.component';
     ShowEmpComponent,
     AddEditEmpComponent,
 
-    WorkInquiryComponent
+    WorkInquiryComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

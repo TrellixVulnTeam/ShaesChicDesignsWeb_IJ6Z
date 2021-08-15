@@ -12,6 +12,23 @@ readonly PhotoUrl = "https://localhost:44347/Photos/";
 
   constructor(private http:HttpClient) { }
 
+  getWorkInquiries():Observable<any[]>{
+    return this.http.get<any>(this.APIUrl+'/WorkInquiry');
+  }
+
+  addWorkInquiry(val:any){
+    return this.http.post(this.APIUrl+'/WorkInquiry',val);
+  }
+
+  updateWorkInquiry(val:any){
+    return this.http.put(this.APIUrl+'/WorkInquiry',val);
+  }
+
+  deleteWorkInquiry(val:any){
+    return this.http.delete(this.APIUrl+'/WorkInquiry/'+val);
+  }
+
+
   getDepList():Observable<any[]>{
     return this.http.get<any>(this.APIUrl+'/department');
   }

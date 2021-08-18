@@ -50,3 +50,5 @@ testem.log
 Thumbs.db
 WebAPI/WebAPI/appsettings.json
 WebAPI/WebAPI/WebAPI.csproj.user
+/UI/angular10/node_modules/.cache/babel-webpack
+/UI/angular10/node_modules/.cli-ngcc

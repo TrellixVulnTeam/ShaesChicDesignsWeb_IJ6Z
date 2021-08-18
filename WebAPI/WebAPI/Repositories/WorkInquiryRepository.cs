@@ -1,6 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using WebAPI.Data;
 using WebAPI.Models;
 using WebAPI.Repositories.Interfaces;
@@ -15,9 +13,9 @@ namespace WebAPI.Repositories
             _workContext = workContext;
         }
 
-        public Task<List<WorkInquiry>> Get()
+        public DbSet<WorkInquiry> Get()
         {
-            return _workContext.WorkInquiries.ToListAsync();
+            return _workContext.WorkInquiries;
         }
 
         public int Post(WorkInquiry workInquiry)

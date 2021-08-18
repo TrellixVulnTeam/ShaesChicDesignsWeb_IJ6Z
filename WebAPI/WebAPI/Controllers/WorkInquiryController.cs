@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using WebAPI.Data;
 using WebAPI.Models;
+using WebAPI.Repositories.Interfaces;
 
 namespace WebAPI.Controllers
 {
@@ -10,28 +11,28 @@ namespace WebAPI.Controllers
     [ApiController]
     public class WorkInquiryController : ControllerBase
     {
-        private readonly IConfiguration _configuration;
-        private readonly WorkContext _workContext;
+        private readonly IWorkInquiryRepository _workInquiryRepository;
 
-        public WorkInquiryController(IConfiguration configuration, WorkContext workContext )
+        public WorkInquiryController(IWorkInquiryRepository workInquiryRepository, WorkContext workContext)
         {
-            _configuration = configuration;
-            _workContext = workContext;
+            _workInquiryRepository = workInquiryRepository;
         }
 
         [HttpGet]
         public JsonResult Get()
         {
-            return new JsonResult(_workContext.WorkInquiries.ToListAsync());
+            return new JsonResult(_workInquiryRepository.Get());
         }
 
 
         [HttpPost]
         public JsonResult Post(WorkInquiry workInquiry)
         {
-            _workContext.WorkInquiries.Add(workInquiry);
-            _workContext.SaveChangesAsync();
-            return new JsonResult("Added Successfully");
+            int result = _workInquiryRepository.Post(workInquiry);
+            if(result > 0)
+                return new JsonResult("Added Successfully");
+            else
+                return new JsonResult("Work Inquiry NOT added!");
         }
 
 

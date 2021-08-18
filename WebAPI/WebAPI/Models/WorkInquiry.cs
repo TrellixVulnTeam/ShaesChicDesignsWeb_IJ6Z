@@ -26,17 +26,10 @@ namespace WebAPI.Models
         //[RegularExpression("^(?!0+$)(\\+\\d{1,3}[- ]?)?(?!0+$)\\d{10,15}$", ErrorMessage = "Please enter valid phone number")]
         public string PhoneNumber { get; set; }
         //[Required]
-        public DateTime? CreatedDate 
-        {   
-            get
-            {
-                return DateTime.Now;
-            }
-            
-            set
-            {
-                CreatedDate = value;
-            }
+        public DateTime? CreatedDate
+        {
+            get => DateTime.Now;
+            set => CreatedDate = value;
         }
     }
 }

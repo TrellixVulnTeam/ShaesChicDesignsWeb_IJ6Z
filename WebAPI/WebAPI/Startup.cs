@@ -8,6 +8,8 @@ using Microsoft.Extensions.Hosting;
 using Newtonsoft.Json.Serialization;
 using System.IO;
 using WebAPI.Data;
+using WebAPI.Repositories;
+using WebAPI.Repositories.Interfaces;
 
 namespace WebAPI
 {
@@ -33,6 +35,7 @@ namespace WebAPI
             options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore).AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver =
             new DefaultContractResolver());
 
+            services.AddScoped<IWorkInquiryRepository, WorkInquiryRepository>();
             services.AddDbContext<WorkContext>(options =>
                 options.UseSqlite(Configuration.GetConnectionString("Work")));
         }

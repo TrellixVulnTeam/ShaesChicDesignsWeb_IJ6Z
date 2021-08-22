@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -15,6 +16,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { WorkInquiryComponent } from './workInquiry/workInquiry.component';
 import { HomeComponent } from './home/home.component';
+//import { HeroFormComponent } from './hero-form/hero-form.component';
 
 @NgModule({
   declarations: [
@@ -27,10 +29,12 @@ import { HomeComponent } from './home/home.component';
     AddEditEmpComponent,
 
     WorkInquiryComponent,
-    HomeComponent
+    HomeComponent,
+    //HeroFormComponent
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

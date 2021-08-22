@@ -1,47 +1,91 @@
+<div class="container">
+  <div [hidden]="submitted">
+    <h1>Request a Custom Design</h1>
+    <form (ngSubmit)="onSubmit(workInquiryForm)" #workInquiryForm="ngForm">
+      <div class="form-group">
+        <label for="FirstName">First Name</label>
+        <input type="text" class="form-control" id="FirstName" required [(ngModel)]="model.FirstName" name="FirstName"
+          #FirstName="ngModel" placeholder="Enter First Name">
+        <div [hidden]="FirstName.valid || FirstName.pristine" class="alert alert-danger">
+          First Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="LastName">Last Name</label>
+        <input type="text" class="form-control" id="LastName" required [(ngModel)]="model.LastName" name="LastName"
+          #LastName="ngModel" placeholder="Enter Last Name">
+        <div [hidden]="LastName.valid || LastName.pristine" class="alert alert-danger">
+          Last Name is required
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Email">Email</label>
+        <input type="email" class="form-control" id="Email" [(ngModel)]="model.Email" name="Email" #Email="ngModel" ngModel email 
+          placeholder="Enter Email Address">
+        <div [hidden]="Email.valid || Email.pristine"
+               class="alert alert-danger">
+               Email Address must be valid format
+          </div>
+      </div>
+      <div class="form-group">
+        <label for="PhoneNumber">Phone Number</label>
+        <input type="text" class="form-control" id="PhoneNumber" required [(ngModel)]="model.PhoneNumber" [pattern]="mobNumberPattern"
+          name="PhoneNumber" #PhoneNumber="ngModel" size="12" placeholder="Enter Phone Number">        
+          <div [hidden]="PhoneNumber.valid || PhoneNumber.pristine"
+        class="alert alert-danger">
+          Phone Number is required and must be valid format
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="Description">Request Description</label>
+        <textarea type="text" class="form-control" id="Description" required [(ngModel)]="model.Description"
+          name="Description" #Description="ngModel" placeholder="Enter Request Description" maxlength="1000"></textarea>
+        <div [hidden]="Description.valid || Description.pristine" class="alert alert-danger">
+          Request Description is required
+        </div>
+      </div>
+      <button type="submit" class="btn btn-success" [disabled]="!workInquiryForm.form.valid">Submit</button>
+    </form>
+  </div>
 
-<br>
-<h3>Request a Custom Design</h3>
-<hr><br>
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-froup row" style="width: 60%;">
-        <label class="col-sm-2 col-form-label">First Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="FirstName" placeholder="Enter First Name">
-        </div>
+  <div [hidden]="!submitted">
+    <h2>You submitted the following:</h2>
+    <div class="row">
+      <div class="col-xs-3">First Name</div>
+      <div class="col-xs-9">{{ model.FirstName }}</div>
     </div>
-</div>
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-froup row" style="width: 60%;">
-        <label class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="LastName" placeholder="Enter Last Name">
-        </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Last Name</div>
+      <div class="col-xs-9">{{ model.LastName }}</div>
     </div>
-</div>
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-froup row" style="width: 60%;">
-        <label class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="Email" placeholder="Enter Email">
-        </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Email Address</div>
+      <div class="col-xs-9">{{ model.Email }}</div>
     </div>
-</div>
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-froup row" style="width: 60%;">
-        <label class="col-sm-2 col-form-label">Phone Number</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="PhoneNumber" placeholder="Enter Phone Number">
-        </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Phone Number</div>
+      <div class="col-xs-9">{{ model.PhoneNumber }}</div>
     </div>
-</div>
-<div class="d-flex flex-row bd-highlight mb-3">
-    <div class="form-froup row" style="width: 60%;">
-        <label class="col-sm-2 col-form-label">Design Request Description</label>
-        <div class="col-sm-10">
-            <input type="text" class="form-control" [(ngModel)]="Description" placeholder="Enter Description for Design Request">
-        </div>
+    <br>
+    <div class="row">
+      <div class="col-xs-3">Request Description</div>
+      <div class="col-xs-9">{{ model.Description }}</div>
     </div>
+    <br>
+    <button class="btn btn-primary" (click)="submitted=false">Edit</button>
+  </div>
 </div>
-<button (click)="addWorkInquiry()" class="btn btn-primary">
-    Submit
-</button>
+
+<hr>
+<style>
+  .no-style .ng-valid {
+    border-left: 1px solid #CCC
+  }
+
+  .no-style .ng-invalid {
+    border-left: 1px solid #CCC
+  }
+</style>

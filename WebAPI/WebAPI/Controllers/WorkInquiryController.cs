@@ -31,7 +31,7 @@ namespace WebAPI.Controllers
         {
             workInquiry.CreatedDate = DateTime.Now;
             int result = _workInquiryRepository.Post(workInquiry);
-            if(result > 0)
+            if (result > 0)
                 return new JsonResult("Added Successfully");
             else
                 return new JsonResult("Work Inquiry NOT added!");

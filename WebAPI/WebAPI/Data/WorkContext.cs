@@ -12,7 +12,7 @@ namespace WebAPI.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<WorkInquiry>()
-              .HasKey(p => new { p.WorkInquiryId});
+              .HasKey(p => new { p.WorkInquiryId });
         }
 
         public DbSet<WorkInquiry> WorkInquiries { get; set; }
